@@ -11,7 +11,10 @@ doLoadData <- FALSE #choose whether to load the data from the file (just shortcu
 
 urlFileName <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip "
 zipFileName <- "./getdata_projectfiles_UCI HAR Dataset.zip"
-directoryName <- "UCI HAR Dataset"
+directoryName <- "./UCI HAR Dataset"
+
+testDataSetFileName <- paste(directoryName, "/test/X_test.txt",sep = "")
+trainDataSetFileName <- paste(directoryName, "/train/X_train.txt",sep = "")
 
 #begDate <- '1/2/2007' ##dd/mm/yyyy
 #endDate <- '2/2/2007' 
