@@ -1,4 +1,4 @@
-# Exploratory Data Analysis - Course Project 1 - plot1
+# Cleaning Data - Course Project 1 - plot1
 #   This is my work for the first assignment (plot 1)
 
 #Should move loading data to another function/script as it is common to all plots
@@ -13,8 +13,14 @@ urlFileName <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FU
 zipFileName <- "./getdata_projectfiles_UCI HAR Dataset.zip"
 directoryName <- "./UCI HAR Dataset"
 
+testSubjectsFileName <- paste(directoryName, "/test/subject_test.txt",sep = "")
 testDataSetFileName <- paste(directoryName, "/test/X_test.txt",sep = "")
+
+trainSubjectsFileName <- paste(directoryName, "/train/subject_train.txt",sep = "")
 trainDataSetFileName <- paste(directoryName, "/train/X_train.txt",sep = "")
+
+numColumnsDataSet <- 561
+numRowsDataSet <- 10 #For testing - should default to -1 for entire dataset
 
 #begDate <- '1/2/2007' ##dd/mm/yyyy
 #endDate <- '2/2/2007' 
@@ -28,4 +34,23 @@ if (!file.exists(directoryName)) {
 	unzip(zipFileName);
 }
 
-# next load the individual datasets
+# next load the individual datasets, merge, etc
+testSubjDataFrame <- read.table(testSubjectsFileName,
+	nrows = numRowsDataSet)
+
+testDataFrame <- read.table(
+	file = testDataSetFileName,
+	colClasses = rep("numeric",numColumnsDataSet),
+	nrows = numRowsDataSet)
+	
+testCompleteDataFrame <- cbind(testSubjDataFrame, testDataFrame)	
+  
+trainSubjDataFrame <- read.table(trainSubjectsFileName,
+	nrows = numRowsDataSet)
+  
+trainDataFrame <- read.table(
+	file = trainDataSetFileName,
+	colClasses = rep("numeric",numColumnsDataSet),
+	nrows = numRowsDataSet)  
+	
+trainCompleteDataFrame <- cbind(trainSubjDataFrame, trainDataFrame)		
