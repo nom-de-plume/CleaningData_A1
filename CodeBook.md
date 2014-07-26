@@ -4,6 +4,8 @@ This script will run and save two datasets:
 - tidyData.txt - merged train and test datasets and extracted only mean and stddev columns
 - aggregatedTidyData.txt - this takes the average of each variable using the mean function and saves it in wide data format
 
+Use read.table('aggregatedTidyData.txt') to read the table into R.
+
 
 
 DATA DICTIONARY
